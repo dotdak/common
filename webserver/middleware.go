@@ -17,7 +17,7 @@ var (
 	ErrJWTFormat        = errors.New("Wrong JWT token format")
 )
 
-func Authorization(s *Webserver) echo.MiddlewareFunc {
+func Authorization(s *WebServer) echo.MiddlewareFunc {
 	return func(next echo.HandlerFunc) echo.HandlerFunc {
 		return func(c echo.Context) error {
 
