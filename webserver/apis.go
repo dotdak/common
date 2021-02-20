@@ -1,14 +1,13 @@
-package main
+package webserver
 
 import (
 	"net/http"
 
-	"webserver-boilerplate/webserver"
-
 	"github.com/labstack/echo/v4"
 )
 
-func NewAPIs(s *webserver.WebServer) *echo.Echo {
+func LoadAPI(s *WebServer) *echo.Echo {
+
 	e := echo.New()
 	e.HideBanner = true
 
@@ -17,7 +16,7 @@ func NewAPIs(s *webserver.WebServer) *echo.Echo {
 	return e
 }
 
-func apiHello(s *webserver.WebServer) echo.HandlerFunc {
+func apiHello(s *WebServer) echo.HandlerFunc {
 	return func(c echo.Context) error {
 		return c.JSON(http.StatusOK, "hello")
 	}

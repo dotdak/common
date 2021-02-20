@@ -21,6 +21,8 @@ func NewWebServer(options ...func(*WebServer)) *WebServer {
 		option(s)
 	}
 
+	s.e = LoadAPI(s)
+
 	return s
 }
 

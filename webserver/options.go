@@ -2,15 +2,7 @@ package webserver
 
 import (
 	"log"
-
-	"github.com/labstack/echo/v4"
 )
-
-func LoadAPI(e *echo.Echo) func(s *WebServer) {
-	return func(s *WebServer) {
-		s.e = e
-	}
-}
 
 func LoadConfig(path string) func(s *WebServer) {
 	return func(s *WebServer) {
