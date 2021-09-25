@@ -11,13 +11,14 @@ func LoadAPI(s *WebServer) *echo.Echo {
 	e := echo.New()
 	e.HideBanner = true
 
-	e.GET("/", apiHello(s))
+	e.GET("/", apiHealthCheck(s))
+	e.GET("/health", apiHealthCheck(s))
 
 	return e
 }
 
-func apiHello(s *WebServer) echo.HandlerFunc {
+func apiHealthCheck(s *WebServer) echo.HandlerFunc {
 	return func(c echo.Context) error {
-		return c.JSON(http.StatusOK, "hello")
+		return c.JSON(http.StatusOK, "Status OK")
 	}
 }

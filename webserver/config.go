@@ -12,8 +12,12 @@ type (
 		Addr  string
 		TLS   bool
 	}
+	BoltDB struct {
+		Path string
+	}
 	Config struct {
 		Web WebConfig
+		BoltDB
 	}
 )
 

@@ -1,1 +1,1 @@
-# go-server-boilerplate
+# go-common-usage
