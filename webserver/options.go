@@ -35,3 +35,9 @@ func SetLogger(logger logr.Logger) func(s *WebServer) {
 		s.logger = logger
 	}
 }
+
+func SetAddr(addr string) func(s *WebServer) {
+	return func(s *WebServer) {
+		s.config.Web.Addr = addr
+	}
+}
