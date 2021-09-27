@@ -11,7 +11,6 @@ type WebServer struct {
 	config *Config
 	logger logr.Logger
 	e      *echo.Echo
-	Bolt   *Bolter
 	secret []byte
 }
 

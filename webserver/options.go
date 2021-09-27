@@ -35,9 +35,3 @@ func SetLogger(logger logr.Logger) func(s *WebServer) {
 		s.logger = logger
 	}
 }
-
-func LoadBoltDB() func(s *WebServer) {
-	return func(s *WebServer) {
-		s.Bolt = NewBolter(s.config.BoltDB.Path, s.logger)
-	}
-}
