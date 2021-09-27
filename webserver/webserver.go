@@ -8,9 +8,9 @@ import (
 )
 
 type WebServer struct {
+	*echo.Echo
 	config *Config
 	logger logr.Logger
-	e      *echo.Echo
 	secret []byte
 }
 
@@ -24,7 +24,7 @@ func NewWebServer(options ...option) *WebServer {
 
 	AddOptions(s, options...)
 
-	s.e = LoadAPI(s)
+	s.Echo = LoadAPI(s)
 
 	return s
 }
@@ -36,5 +36,5 @@ func AddOptions(s *WebServer, options ...option) {
 }
 
 func (s *WebServer) StartServer() error {
-	return s.e.Start(s.config.Web.Addr)
+	return s.Echo.Start(s.config.Web.Addr)
 }
