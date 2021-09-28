@@ -9,7 +9,6 @@ import (
 func LoadAPI(s *WebServer) *echo.Echo {
 
 	e := echo.New()
-	e.HideBanner = true
 
 	e.GET("/", apiHealthCheck(s))
 	e.GET("/health", apiHealthCheck(s))

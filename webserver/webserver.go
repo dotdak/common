@@ -25,6 +25,8 @@ func NewWebServer(options ...option) *WebServer {
 	AddOptions(s, options...)
 
 	s.Echo = LoadAPI(s)
+	s.HideBanner = true
+	s.HidePort = true
 
 	return s
 }
@@ -36,6 +38,7 @@ func AddOptions(s *WebServer, options ...option) {
 }
 
 func (s *WebServer) StartServer() error {
+	logger.LOG().Info("http server", "address", s.config.Web.Addr[1:])
 	return s.Echo.Start(s.config.Web.Addr)
 }
 
