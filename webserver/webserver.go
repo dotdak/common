@@ -38,3 +38,7 @@ func AddOptions(s *WebServer, options ...option) {
 func (s *WebServer) StartServer() error {
 	return s.Echo.Start(s.config.Web.Addr)
 }
+
+func (s *WebServer) Stop() error {
+	return s.Server.Close()
+}
