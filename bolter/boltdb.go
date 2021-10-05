@@ -2,6 +2,7 @@ package bolter
 
 import (
 	"io/fs"
+	"time"
 
 	"github.com/boltdb/bolt"
 	"github.com/dotdak/common/logger"
@@ -10,9 +11,10 @@ import (
 
 type Bolter struct {
 	*bolt.DB
-	Path     string
-	FileMode uint32
-	logger   logr.Logger
+	Path       string
+	FileMode   uint32
+	LastOpened time.Time
+	logger     logr.Logger
 }
 
 func NewBolter(opts ...option) *Bolter {
@@ -37,6 +39,7 @@ func (b *Bolter) Open() error {
 	}
 
 	b.DB = db
+	b.LastOpened = time.Now()
 
 	return nil
 }
